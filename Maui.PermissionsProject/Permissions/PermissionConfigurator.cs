@@ -29,6 +29,12 @@ public class PermissionConfigurator : IPermissionConfigurator
 
     private void SetPermissions<T>(T concreteObject) where T : class
     {
+        this.ProcessBooleanProperties(concreteObject);
+        this.ProcessIPermissionProperties(concreteObject);
+    }
+
+    private void ProcessIPermissionProperties<T>(T concreteObject) where T : class
+    {
         var properties = concreteObject.GetType().GetProperties().Where(p => p.PropertyType.IsAssignableTo(typeof(IPermission)));
         foreach (var property in properties)
         {
@@ -44,6 +50,19 @@ public class PermissionConfigurator : IPermissionConfigurator
                 statusProperty.SetValue(observableCommand, permissionStatus);
             if (messageProperty != null)
                 messageProperty.SetValue(observableCommand, permissionAttribute.Message);
+        }
+    }
+
+    private void ProcessBooleanProperties<T>(T concreteObject) where T : class
+    {
+        var boolProperties = concreteObject.GetType().GetProperties().Where(p => p.PropertyType.IsAssignableTo(typeof(bool)));
+        foreach (var property in boolProperties)
+        {
+            var permissionAttribute = property.GetCustomAttributes<PermissionAttribute>().FirstOrDefault();
+            if (permissionAttribute == null)
+                continue;
+
+            property.SetValue(concreteObject, this._permissions.Contains(permissionAttribute.Permission));
         }
     }
 }

@@ -9,7 +9,7 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Button Text="Add Customer" Command="{Binding AddCustomerCommand}" CommandParameter="teste"/>
+            <Button Text="Add Customer" Command="{Binding AddCustomerCommand}" CommandParameter="teste" IsVisible="{Binding HasAddCustomer}"/>
             <Button Text="Edit Customer" Command="{Binding EditCustomerCommand}"/>
             <Button Text="Remove Customer" Command="{Binding RemoveCustomerCommand}"/>
         </VerticalStackLayout>

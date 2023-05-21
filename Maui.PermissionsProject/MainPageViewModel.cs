@@ -44,6 +44,9 @@ public class MainPageViewModel : BaseViewModel
     [Permission("RemoveCustomer", "Erro de permissão, você não pode excluir")]
     public ObservableCommand RemoveCustomerCommand { get; private set; }
 
+    [Permission("SHOW-CUSTOMER")]
+    public bool HasAddCustomer { get; set; }
+
     #endregion
 
     #region Methods

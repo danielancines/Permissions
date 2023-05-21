@@ -10,7 +10,7 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 
-        permissionConfigurator.InitializePermissions(new string[] { "ADD-CUSTOMER" });
+        permissionConfigurator.InitializePermissions(new string[] { "ADD-CUSTOMER", "SHOW-CUSTOMER1" });
         this.BindingContext = mainPageViewModel;
 	}
 }
