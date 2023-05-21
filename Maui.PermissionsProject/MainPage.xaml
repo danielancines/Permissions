@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.PermissionsProject.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Button Text="Add Customer" Command="{Binding AddCustomerCommand}" CommandParameter="teste"/>
+            <Button Text="Edit Customer" Command="{Binding EditCustomerCommand}"/>
+            <Button Text="Remove Customer" Command="{Binding RemoveCustomerCommand}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
